@@ -3,713 +3,768 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>O Código da Atração - Torne-se Irresistível</title>
+    <title>Plataforma Respira - Reprogramação Mental de 7 Dias</title>
     
-    <!-- Importando Fontes -->
+    <!-- Importando Fonte Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Ícones -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
     <style>
-        /* --- RESET & VARIÁVEIS --- */
+        /* --- DESIGN SYSTEM: PREMIUM HIGH-CONTRAST (Inspirado em fp-platform) --- */
         :root {
-            --primary-red: #c8102e; 
-            --dark-text: #1a1a1a;
-            --light-text: #555555;
-            --gold: #f4c430;
-            --bg-white: #ffffff;
-            --bg-blush: #fff5f6;
-            --bg-offwhite: #fcfcfc;
-            --bg-contrast: #f8f9fa;
-            --green-check: #4CAF50;
-            --font-serif: 'Playfair Display', serif;
+            /* Cores Principais - Alto Contraste & Elegância */
+            --bg-body: #F5F4F0;       /* Bege muito claro/Off-white quente */
+            --bg-card: #FFFFFF;       /* Branco puro para destacar cards */
+            --bg-dark: #111111;       /* Preto rico */
+            --bg-alt: #EBE7DF;        /* Bege intermediário para seções secundárias */
+            
+            /* Texto */
+            --text-main: #111111;     /* Quase preto */
+            --text-light: #5A5A58;    /* Cinza escuro */
+            --text-inverse: #FFFFFF;  /* Branco */
+            
+            /* Destaques e Botões */
+            --accent-black: #000000;
+            --accent-gold: #C29B62;   /* Dourado/Bronze elegante */
+            --border-color: #DCD7CD;
+            
+            /* Fontes */
             --font-main: 'Poppins', sans-serif;
+            
+            /* UI */
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --shadow-soft: 0 15px 35px -10px rgba(0,0,0,0.08);
+            --shadow-hard: 0 20px 40px rgba(0,0,0,0.2);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            width: 100%;
-            overflow-x: hidden;
-            position: relative;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: var(--font-main);
-            color: var(--dark-text);
+            color: var(--text-main);
             line-height: 1.6;
-            background-color: var(--bg-white);
-            font-weight: 400;
+            background-color: var(--bg-body);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        img { max-width: 100%; height: auto; }
+        h1, h2, h3, h4 { 
+            font-family: var(--font-main); 
+            font-weight: 700; 
+            color: var(--text-main); 
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+        }
         
-        h2, h3, h4, h5, h6, p, span, li, button, .logo {
-            font-family: var(--font-main);
-        }
-
-        /* --- ANIMAÇÃO DE ONDAS --- */
-        @keyframes wave-motion {
-            0% { transform: translateX(0) scaleY(1); }
-            50% { transform: translateX(-20px) scaleY(1.2); }
-            100% { transform: translateX(0) scaleY(1); }
-        }
+        p, li, a, button, span { font-family: var(--font-main); }
+        img { max-width: 100%; display: block; object-fit: cover; }
+        a { text-decoration: none; color: inherit; }
 
         /* --- UTILITÁRIOS --- */
         .container {
             width: 100%;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
-            position: relative;
-            z-index: 2;
+            padding: 0 24px;
         }
+        
         .text-center { text-align: center; }
         
-        /* BOTÃO (Atualizado para funcionar como Link <a>) */
-        .btn-cta {
-            background-color: var(--primary-red);
-            color: white;
-            width: 100%;
-            padding: 16px;
-            font-size: 1rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(200, 16, 46, 0.3);
-            font-family: var(--font-main);
-            
-            /* Propriedades para garantir que o link pareça um botão */
-            display: block; 
-            text-align: center;
-            text-decoration: none;
-            line-height: 1.5;
-        }
-        .btn-cta:hover { background-color: #a00d25; color: white; }
-
-        /* --- WAVE DIVIDERS --- */
-        .wave-divider {
-            position: absolute;
-            left: -10%;
-            width: 120%;
-            overflow: hidden;
-            line-height: 0;
-            z-index: 1;
-            pointer-events: none;
-        }
-        .wave-divider svg {
-            display: block;
-            width: 100%;
-            height: 70px;
-            transform-origin: bottom center;
-            animation: wave-motion 6s ease-in-out infinite;
-        }
-        .wave-bottom { bottom: -1px; transform: rotate(180deg); }
-        .wave-top { top: -1px; }
-        
-        .fill-blush { fill: var(--bg-blush); }
-        .fill-contrast { fill: var(--bg-contrast); }
-        .fill-white { fill: #ffffff; }
-        .fill-dark { fill: #111; }
-
-        /* --- TOP BAR --- */
-        .top-bar {
-            background-color: #000;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            font-size: 0.8rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
+        /* --- SCARCITY TOP BAR --- */
+        .top-scarcity-bar {
+            background-color: var(--bg-dark);
+            color: var(--bg-body);
+            padding: 12px 0;
+            font-size: 0.85rem;
             font-weight: 500;
+            text-align: center;
+            letter-spacing: 0.5px;
+            z-index: 1001;
+            position: relative;
         }
-        .timer { font-family: monospace; font-size: 0.9rem; }
+        .top-scarcity-bar strong {
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+        .top-scarcity-bar .badge {
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 800;
+            margin: 0 4px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
 
-        /* --- HEADER --- */
+        /* Botões */
+        .btn-cta {
+            background: var(--accent-black);
+            color: var(--text-inverse);
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 40px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 2px solid var(--accent-black);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+        }
+        .btn-cta:hover { 
+            background: transparent; 
+            color: var(--accent-black);
+        }
+        .btn-cta:hover .subtext { color: var(--accent-black); }
+        
+        .btn-cta .subtext {
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: none;
+            color: rgba(255,255,255,0.7);
+            margin-top: 4px;
+            letter-spacing: 0;
+            transition: color 0.3s ease;
+        }
+
+        /* --- HEADER / NAV --- */
         header {
-            padding: 15px 20px;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            background: rgba(245, 244, 240, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            background: rgba(255,255,255,0.98);
-            z-index: 1000;
-            width: 100%;
         }
-        .nav-links { display: none; gap: 20px; font-size: 0.85rem; text-transform: uppercase; font-weight: 500; }
-        .logo { font-size: 1.4rem; color: var(--primary-red); font-weight: 700; letter-spacing: -0.5px; }
-        .logo span { color: var(--dark-text); font-weight: 400; }
-        .header-icons { display: flex; gap: 15px; font-size: 1.1rem; }
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+        .logo span { 
+            font-weight: 300; 
+            font-size: 1.4rem; 
+            margin-left: 5px; 
+            color: var(--text-light); 
+        }
+        
+        .nav-links { display: flex; gap: 35px; font-size: 0.95rem; font-weight: 500; }
+        .nav-links a { position: relative; padding-bottom: 4px; }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: 0; left: 0; background-color: var(--accent-gold);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        
+        .nav-actions { display: flex; align-items: center; gap: 20px; }
+        .login-btn { font-size: 0.95rem; font-weight: 600; border-bottom: 2px solid transparent; transition: 0.3s; }
+        .login-btn:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
+        
+        .mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; }
 
         /* --- HERO SECTION --- */
-        .product-hero {
+        .hero {
+            padding: 100px 0;
+            overflow: hidden;
+            background: var(--bg-body);
+        }
+        .hero-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
+            gap: 60px;
             align-items: center;
-            background: radial-gradient(circle at center, #fff 0%, #fafafa 100%);
         }
-        .product-image-wrapper {
+        
+        .hero-content .membership-tag {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-gold);
+            margin-bottom: 25px;
+            display: inline-block;
+            font-weight: 700;
+        }
+        .hero-content h1 {
+            font-size: 4.2rem;
+            line-height: 1.05;
+            margin-bottom: 24px;
+        }
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 90%;
+            font-weight: 400;
+        }
+
+        .hero-visual {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-hard);
+        }
+        .hero-visual img {
+            width: 100%;
+            height: 650px;
+            object-fit: cover;
+        }
+        
+        /* Floating Stats Cards */
+        .stat-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 25px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(255,255,255,0.5);
+            bottom: 40px; 
+            right: -20px;
+        }
+        
+        .stat-card h4 { font-size: 1.3rem; font-weight: 800; margin-bottom: 2px; color: var(--accent-gold); }
+        .stat-card p { font-size: 0.85rem; color: var(--text-main); font-weight: 600; margin: 0; text-transform: uppercase; }
+
+        /* --- MISSION & GOAL --- */
+        .mission-section {
+            background-color: var(--bg-dark);
+            color: var(--text-inverse);
+            padding: 120px 0;
+            text-align: center;
+        }
+        .mission-content { max-width: 850px; margin: 0 auto; }
+        .mission-content h2 { font-size: 2.8rem; margin-bottom: 30px; color: var(--bg-body); }
+        .mission-content p { font-size: 1.2rem; color: #A0A0A0; margin-bottom: 40px; font-weight: 300; line-height: 1.8; }
+
+        /* --- WHAT YOU'LL FIND --- */
+        .features-section { padding: 120px 0; background: var(--bg-alt); }
+        .section-header { text-align: center; margin-bottom: 70px; }
+        .section-header h2 { font-size: 3rem; margin-bottom: 15px; }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            background: var(--bg-card);
+            padding: 45px 35px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .feature-card:hover { 
+            transform: translateY(-8px); 
+            box-shadow: var(--shadow-hard);
+            border-color: var(--accent-gold);
+        }
+        .feature-icon {
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 25px;
+        }
+        .feature-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 15px; }
+        .feature-card p { font-size: 0.95rem; color: var(--text-light); }
+
+        /* --- COURSE / AUDIO LIBRARY --- */
+        .library-section { padding: 120px 0; background: var(--bg-body); }
+        .library-top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; }
+        .library-top h2 { font-size: 2.8rem; }
+        
+        .courses-scroll {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            gap: 30px;
+            overflow-x: auto;
+            padding-bottom: 40px;
+            scrollbar-width: none; 
         }
-        .book-cover {
-            width: 260px;
-            height: 390px;
-            background: #111;
-            color: #fff;
+        .courses-scroll::-webkit-scrollbar { display: none; }
+        
+        .course-card {
+            min-width: 340px;
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            box-shadow: 10px 10px 30px rgba(0,0,0,0.25);
-            padding: 20px;
-            border: 1px solid #333;
+            transition: 0.3s;
         }
-        .book-cover h2 { font-family: var(--font-serif); font-size: 1.6rem; line-height: 1.2; margin-top: 15px; color: #fff; }
-        .book-cover .lips { font-size: 3.5rem; color: var(--primary-red); margin-bottom: 10px; }
-        .book-cover .author { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; margin-top: auto; color: #888; }
+        .course-card:hover { border-color: var(--accent-gold); }
+        .course-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+        }
+        .course-body { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+        .course-rating {
+            display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; color: var(--text-light); margin-bottom: 15px;
+        }
+        .course-rating i { color: var(--accent-gold); }
+        .course-title { font-size: 1.2rem; line-height: 1.4; margin-bottom: 20px; flex-grow: 1; font-weight: 700; }
         
-        .product-details h1 { 
-            font-family: var(--font-serif); 
-            font-size: 2.4rem; 
-            line-height: 1.2; 
-            margin-bottom: 15px; 
-            color: #000; 
-        }
-        .stars { color: var(--gold); margin-bottom: 10px; font-size: 1rem; }
+        .course-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 20px; }
         
-        .price-container { margin: 20px 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .current-price { font-size: 1.8rem; font-weight: 700; color: var(--primary-red); }
-        .old-price { text-decoration: line-through; color: #999; font-size: 1.1rem; }
-        .save-badge { background: var(--primary-red); color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; }
+        .btn-buy { 
+            background: var(--bg-dark); 
+            color: var(--text-inverse); 
+            padding: 10px 20px; 
+            border-radius: 4px; 
+            font-size: 0.85rem; 
+            font-weight: 700; 
+            border: none;
+            cursor: pointer; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .learn-more { font-size: 0.85rem; font-weight: 600; text-decoration: underline; color: var(--text-main); }
+        .learn-more:hover { color: var(--accent-gold); }
+
+        /* --- PERKS (HERE'S WHAT YOU GET) --- */
+        .perks-section { padding: 100px 0; background: var(--bg-card); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+        .perks-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; margin-top: 60px; }
+        .perk-item { display: flex; gap: 20px; align-items: flex-start; }
+        .perk-item i { color: var(--accent-gold); font-size: 1.5rem; margin-top: 5px; }
+        .perk-info h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+        .perk-info p { font-size: 0.95rem; color: var(--text-light); }
+
+        /* --- BEFORE & AFTER (TEXT BASED) --- */
+        .ba-section { padding: 120px 0; background: var(--bg-dark); color: var(--text-inverse); }
+        .ba-section h2 { color: var(--text-inverse); font-size: 3rem; }
+        .ba-section p { color: #A0A0A0; }
         
-        .features-check li { margin-bottom: 8px; display: flex; align-items: start; gap: 10px; font-size: 0.9rem; }
-        .features-check i { margin-top: 5px; color: var(--dark-text); font-size: 0.8rem; }
-
-        /* --- 1. PAIN SECTION WRAPPER --- */
-        .pain-section-wrapper {
-            position: relative;
-            background-color: var(--bg-blush);
-            padding: 50px 0;
-            margin-bottom: 60px;
-            width: 100%;
-        }
-        .pain-section {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-        .pain-section h2 { 
-            font-size: 2rem; 
-            margin-bottom: 10px; 
-            font-weight: 600; 
-        }
-        .pain-section p { 
-            color: var(--light-text); 
-            margin-bottom: 15px; 
-            font-size: 1rem; 
-        }
-
-        /* --- 2. COMPARISON TABLE --- */
-        .comparison-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: start;
-            margin-bottom: 80px;
-        }
-        .comparison-text h2 { font-size: 2rem; margin-bottom: 20px; font-weight: 600; }
-        .comparison-text p { margin-bottom: 20px; color: var(--light-text); font-size: 0.95rem; }
+        .ba-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 60px; }
         
-        .comparison-table {
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            width: 100%;
+        .ba-card { 
+            background: #1A1A1A; 
+            padding: 45px; 
+            border-radius: var(--radius-md); 
+            border: 1px solid #333; 
         }
-        .comp-header {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            background: #fff;
-            font-weight: 700;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .comp-header div { padding: 15px; text-align: center; font-size: 0.85rem; }
-        .comp-header .brand-col { color: var(--dark-text); font-weight: 800; font-size: 0.95rem; }
-        .comp-row {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            background: #fff;
-            border-bottom: 1px solid #f9f9f9;
-            align-items: center;
-        }
-        .comp-feature {
-            background-color: var(--primary-red);
-            color: white;
-            padding: 12px 15px;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            font-weight: 500;
-            line-height: 1.3;
-        }
-        .comp-check, .comp-cross {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1rem;
-            height: 100%;
-            background: #fff;
-            padding: 10px;
-        }
-        .comp-check { color: var(--green-check); }
-        .comp-cross { color: #ccc; }
-
-        /* --- 3. WARNING SECTION --- */
-        .warning-wrapper {
-            background: #fffbf2;
-            border-left: 4px solid #ffbd00;
-            margin-bottom: 80px;
-            width: 100%;
-        }
-        .warning-section { padding: 40px; }
-        .warning-title {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-weight: 600;
-        }
-        .warning-icon { font-size: 2rem; color: #ffbd00; }
-        .warning-content ul { list-style: disc; padding-left: 20px; margin: 20px 0; }
-        .warning-content li { margin-bottom: 10px; color: var(--light-text); font-size: 0.95rem; }
-
-        /* --- 4. EXPERIENCE SECTION WRAPPER --- */
-        .experience-wrapper {
-            position: relative;
-            background-color: var(--bg-contrast);
-            padding-top: 80px;
-            padding-bottom: 60px;
-            margin-bottom: 60px;
-            width: 100%;
-        }
-        .experience-section {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 40px;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-        .exp-list li { display: flex; gap: 15px; margin-bottom: 25px; align-items: flex-start; }
-        .exp-icon { font-size: 1.2rem; min-width: 25px; margin-top: 2px; }
-        .exp-text strong { display: block; color: var(--dark-text); font-weight: 600; margin-bottom: 5px; }
-        .exp-text { font-size: 0.9rem; color: var(--light-text); }
-
-        .stats-container { display: flex; flex-direction: column; gap: 20px; }
-        .stat-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-        }
-        .circle-chart {
-            width: 60px; height: 60px;
-            border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            font-weight: 700; color: var(--primary-red); font-size: 0.9rem;
-            flex-shrink: 0; position: relative;
-        }
-        .c-91 { background: conic-gradient(var(--primary-red) 91%, #ffe5e5 0); }
-        .c-89 { background: conic-gradient(var(--primary-red) 89%, #ffe5e5 0); }
-        .c-95 { background: conic-gradient(var(--primary-red) 95%, #ffe5e5 0); }
-        .circle-inner {
-            width: 48px; height: 48px; background: white; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; position: absolute;
-        }
-        .stat-desc { font-size: 0.85rem; color: var(--light-text); line-height: 1.4; }
-
-        /* --- 5. BEFORE & AFTER --- */
-        .game-section {
-            margin-bottom: 80px;
-            display: grid;
-            grid-template-columns: 1fr 1.4fr;
-            gap: 40px;
-            align-items: center;
-        }
-        .game-text h2 { font-size: 2.2rem; margin-bottom: 15px; font-weight: 600; }
-        .game-text p { color: var(--light-text); font-size: 0.95rem; }
+        .ba-quote { font-size: 1.15rem; font-style: italic; margin-bottom: 30px; color: var(--accent-glow); font-weight: 300; }
+        .ba-results { margin-bottom: 30px; }
+        .ba-results p { font-weight: 700; font-size: 0.9rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-gold); }
+        .ba-results ul { list-style: none; }
+        .ba-results li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: #CCCCCC; margin-bottom: 12px; }
+        .ba-results li i { color: var(--accent-gold); margin-top: 5px; font-size: 0.8rem; }
         
-        .ba-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
-        .ba-col { padding: 30px 20px; }
-        .ba-before { background-color: #fff0f0; } 
-        .ba-after { background-color: #e3fcef; } 
-        .ba-header {
-            background-color: var(--primary-red);
-            color: white;
-            padding: 5px 10px; text-transform: uppercase; font-weight: 700; font-size: 0.7rem;
-            display: inline-block; margin-bottom: 20px; border-radius: 3px;
-        }
-        .ba-list div {
-            margin-bottom: 15px; display: flex; justify-content: space-between;
-            align-items: center; font-size: 0.8rem; line-height: 1.4;
-        }
-        .ba-before .ba-list div { text-align: right; flex-direction: row; } 
-        .icon-cross { color: #ff4444; font-size: 0.9rem; margin-left: 8px; }
-        .icon-check { color: #4CAF50; font-size: 0.9rem; margin-left: 8px; }
+        .ba-meta { font-size: 0.85rem; color: #888; border-top: 1px solid #333; padding-top: 20px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* --- 6. GUARANTEE SECTION --- */
-        .guarantee-section {
-            text-align: center;
-            padding: 50px 20px;
-            background: #fafafa;
-            max-width: 800px;
-            margin: 0 auto 60px auto;
-            border: 1px dashed #ddd;
-            border-radius: 10px;
+        /* --- APP SECTION --- */
+        .app-section { padding: 120px 0; background: var(--bg-body); }
+        .app-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        
+        /* Simple Pure CSS Phone Mockup */
+        .phone-mockup {
+            width: 320px; height: 640px;
+            background: #fff; border: 14px solid var(--bg-dark);
+            border-radius: 45px; margin: 0 auto;
+            position: relative; overflow: hidden;
+            box-shadow: var(--shadow-hard);
         }
-        .guarantee-section h2 { font-size: 1.6rem; margin-bottom: 20px; font-weight: 600; }
-        .guarantee-section p { margin-bottom: 20px; color: var(--light-text); font-size: 0.95rem; }
-
-        /* --- TESTIMONIALS --- */
-        .testimonials-wrapper { background-color: #fff; padding-bottom: 80px; width: 100%; }
-        .reviews-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 50px;
-        }
-        .review-card {
-            background: #fff; padding: 25px 20px; border-radius: 12px; text-align: center; position: relative;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.03); border: 1px solid #f9f9f9;
-        }
-        .quote-icon { color: var(--primary-red); font-size: 1.8rem; position: absolute; top: 15px; right: 15px; opacity: 0.15; }
-        .review-title { font-weight: 700; font-size: 0.95rem; margin: 15px 0; }
-        .review-body { font-size: 0.85rem; color: var(--light-text); margin-bottom: 20px; font-style: italic; }
-        .review-author { font-size: 0.75rem; text-transform: uppercase; color: #888; font-weight: 700; letter-spacing: 1px; }
+        .phone-notch { width: 140px; height: 30px; background: var(--bg-dark); position: absolute; top: 0; left: 50%; transform: translateX(-50%); border-radius: 0 0 20px 20px; z-index: 10;}
+        .phone-screen { padding: 70px 25px 25px; background: linear-gradient(135deg, #FFFFFF 0%, #F5F4F0 100%); height: 100%; display: flex; flex-direction: column; }
+        .app-title { font-size: 1.8rem; font-weight: 800; text-align: center; margin-bottom: 35px; color: var(--bg-dark); letter-spacing: -1px; }
+        
+        .app-track { background: #fff; padding: 18px; border-radius: 16px; margin-bottom: 15px; display: flex; align-items: center; gap: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.04); border: 1px solid var(--border-color); }
+        .app-track-icon { width: 45px; height: 45px; background: var(--bg-dark); border-radius: 10px; display: flex; justify-content: center; align-items: center; color: var(--accent-gold); }
+        .app-track-info div:first-child { font-weight: 700; font-size: 0.9rem; color: var(--bg-dark); }
+        .app-track-info div:last-child { font-size: 0.75rem; color: var(--text-light); font-weight: 500; margin-top: 2px; }
 
         /* --- FOOTER --- */
-        .footer-wrapper { position: relative; margin-top: 50px; width: 100%; }
-        .footer-wave svg {
-            animation: wave-motion 8s ease-in-out infinite reverse;
-        }
-        footer { 
-            background: #111; color: #fff; padding: 60px 20px 40px 20px; 
-            text-align: center; font-size: 0.8rem; position: relative; z-index: 2;
-        }
+        footer { background: var(--bg-card); padding: 80px 0 40px; border-top: 1px solid var(--border-color); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
+        .footer-logo { font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; letter-spacing: -1px; }
+        .footer-text { font-size: 0.95rem; color: var(--text-light); max-width: 320px; }
+        .footer-links h4 { font-size: 1rem; font-weight: 700; margin-bottom: 25px; text-transform: uppercase; color: var(--bg-dark); }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 12px; font-size: 0.9rem; color: var(--text-light); font-weight: 500; }
+        .footer-links a:hover { color: var(--accent-gold); }
+        .footer-bottom { text-align: center; border-top: 1px solid var(--border-color); padding-top: 30px; font-size: 0.8rem; color: #999; }
 
-        /* --- RESPONSIVIDADE MOBILE --- */
-        @media (min-width: 769px) { .nav-links { display: flex; } }
-
-        @media (max-width: 768px) {
-            .container { padding: 30px 20px; }
+        @media (max-width: 900px) {
+            .nav-links, .login-btn { display: none; }
+            .mobile-menu-btn { display: block; }
             
-            .product-details h1 { font-size: 1.8rem; line-height: 1.3; } 
-            h2 { font-size: 1.5rem !important; line-height: 1.3; }
+            .hero-grid, .app-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-content { text-align: center; }
+            .hero-content p { max-width: 100%; margin: 0 auto 30px; }
+            .hero-content h1 { font-size: 3.2rem; }
+            .stat-card { bottom: 20px; right: 20px; }
             
-            .product-hero, .comparison-section, .experience-section, .game-section, .reviews-grid {
-                grid-template-columns: 1fr; 
-                gap: 35px;
-            }
+            .perks-list { grid-template-columns: 1fr; gap: 40px; }
+            .footer-grid { grid-template-columns: 1fr; }
             
-            .product-hero { text-align: center; }
-            .product-image-wrapper { padding: 0; }
-            .book-cover { width: 220px; height: 330px; margin: 0 auto; }
-            .price-container { justify-content: center; }
-            .features-check { display: inline-block; text-align: left; }
-            
-            .comparison-table { 
-                overflow-x: auto; 
-                display: block; 
-                width: 100%; 
-                -webkit-overflow-scrolling: touch;
-            }
-            .comp-header, .comp-row { min-width: 500px; } 
-            
-            .warning-section { padding: 25px 15px; }
-            .warning-title { font-size: 1.4rem; justify-content: center; text-align: center; }
-            
-            .ba-container { grid-template-columns: 1fr; }
-            
-            .reviews-grid { gap: 15px; }
-            
-            p, li { font-size: 0.9rem !important; }
-        }
-
-        @media (max-width: 480px) {
-            .product-details h1 { font-size: 1.6rem; }
-            h2 { font-size: 1.35rem !important; }
-            .top-bar { font-size: 0.75rem; }
-            .btn-cta { font-size: 0.9rem; padding: 14px; }
-            .current-price { font-size: 1.5rem; }
+            .library-top { flex-direction: column; align-items: flex-start; gap: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <span>O SEGREDO DA ATRAÇÃO NATURAL 🔓 VAGAS LIMITADAS</span>
-        <div class="timer">03 : 21 : 04</div>
+    <!-- AVISO DE ESCASSEZ NA BARRA SUPERIOR -->
+    <div class="top-scarcity-bar">
+        <div class="container">
+            <i class="fas fa-door-open" style="color: var(--accent-gold); margin-right: 8px;"></i> 
+            Vagas Abertas: Oferta de <strong>pagamento único (R$ 18,90)</strong> liberada somente para os <span class="badge">15 primeiros</span>
+        </div>
     </div>
 
+    <!-- NAVEGAÇÃO -->
     <header>
-        <div class="logo">divinely<span>feminine</span></div>
-        <div class="nav-links">
-            <a href="#">Início</a><a href="#">Método</a><a href="#">Sobre</a><a href="#">Login</a>
+        <div class="container navbar">
+            <div class="logo">MÉTODO<span>RESPIRA</span></div>
+            <div class="nav-links">
+                <a href="#sobre">Sobre a Metodologia</a>
+                <a href="#cursos">Biblioteca de Áudios</a>
+                <a href="#depoimentos">Resultados</a>
+                <a href="#faq">FAQ</a>
+            </div>
+            <div class="nav-actions">
+                <a href="#" class="login-btn">Entrar</a>
+                <i class="fas fa-bars mobile-menu-btn"></i>
+            </div>
         </div>
-        <div class="header-icons"><i class="far fa-user"></i><i class="fas fa-shopping-bag"></i></div>
     </header>
 
-    <div class="container">
-        <!-- Hero -->
-        <section class="product-hero">
-            <div class="product-image-wrapper">
-                <div class="book-cover">
-                    <div class="author">The Secret</div>
-                    <div class="lips"><i class="fas fa-gem"></i></div>
-                    <h2>THE<br>ATTRACTION<br><span style="color:var(--primary-red); font-style:italic; font-family:'Brush Script MT', cursive;">Code</span></h2>
-                </div>
-            </div>
-
-            <div class="product-details">
-                <h1>O Código da Atração – Torne-se irresistível</h1>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="membership-tag">Plataforma Exclusiva</div>
+                <h1>Pare de Fumar.<br>Sinta-se Livre.<br>Viva Mais.</h1>
+                <p>
+                    Acesso completo à reprogramação mental contra o tabagismo. 
+                    Experimente práticas guiadas de hipnoterapia que desligam o impulso automático de fumar em apenas 7 dias, restaurando sua saúde sem esforço excessivo.
+                </p>
                 
-                <div class="rating text-center-mobile">
-                    <span class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></span>
-                    <span style="font-size: 0.85rem; color: #666; font-weight: 500;">(10.500+ Mulheres Transformadas)</span>
-                </div>
-                
-                <div class="price-container">
-                    <span class="current-price">R$ 104,61</span>
-                    <span class="old-price">R$ 275,75</span>
-                    <span class="save-badge">OFERTA ÚNICA</span>
-                </div>
-                
-                <ul class="features-check">
-                    <li><i class="far fa-check-circle"></i> Ative seu <strong>Magnetismo Pessoal Inabalável</strong></li>
-                    <li><i class="far fa-check-circle"></i> Tenha uma <strong>Presença que Preenche o Ambiente</strong></li>
-                    <li><i class="far fa-check-circle"></i> Desenvolva Confiança Silenciosa e Autêntica</li>
-                </ul>
-                
-                <!-- BOTÃO CTA 1 -->
-                <a href="SEU_LINK_DE_CHECKOUT_AQUI" class="btn-cta">QUERO DESCOBRIR O CÓDIGO</a>
-            </div>
-        </section>
-    </div>
-
-    <!-- Pain Section -->
-    <div class="pain-section-wrapper">
-        <div class="wave-divider wave-top">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="fill-blush"></path>
-            </svg>
-        </div>
-
-        <div class="container pain-section">
-            <h2>Cansada de passar despercebida ou sentir que falta "algo a mais"?</h2>
-            <p>A verdadeira atração não é sobre mudar quem você é, mas sobre potencializar seus pontos fortes naturais. O magnetismo real acontece quando sua autoconfiança e sua imagem estão perfeitamente alinhadas.</p>
-            <p>Pare de buscar validação externa. Aprenda a emitir uma frequência de alto valor que atrai olhares, respeito e oportunidades naturalmente, sem que você precise dizer uma única palavra.</p>
-        </div>
-        
-        <div class="wave-divider wave-bottom">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-blush"></path>
-            </svg>
-        </div>
-    </div>
-
-    <div class="container">
-        <section class="comparison-section">
-            <div class="comparison-text">
-                <h2>Por que a autenticidade vence a perfeição</h2>
-                <p>Tentar ser perfeita gera distância e ansiedade. Ser autêntica gera conexão e admiração. O <em>Código da Atração</em> ensina a usar sua singularidade como sua maior vantagem competitiva.</p>
-                <p>É sobre alinhar sua postura, sua energia feminina e seus traços físicos de forma estratégica para se tornar inesquecível em qualquer ambiente.</p>
+                <!-- BOTÃO DE CHECKOUT AQUI -->
+                <a href="https://www.ggcheckout.com/checkout/v4/fRimbgdjPjwLp8uZV3ki" class="btn-cta">
+                    <span class="btn-main-text">TORNAR-SE MEMBRO</span>
+                    <span class="subtext">Por apenas R$ 18,90 (Pagamento Único)</span>
+                </a>
             </div>
             
-            <div class="comparison-table">
-                <div class="comp-header">
-                    <div></div><div class="brand-col">O Código da<br>Atração</div><div style="color:#888;">Padrão Comum</div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-feature">Magnetismo Natural e Fluido</div><div class="comp-check"><i class="fas fa-check"></i></div><div class="comp-cross"><i class="fas fa-times"></i></div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-feature">Confiança que Vem de Dentro</div><div class="comp-check"><i class="fas fa-check"></i></div><div class="comp-cross"><i class="fas fa-times"></i></div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-feature">Uso Estratégico da Imagem</div><div class="comp-check"><i class="fas fa-check"></i></div><div class="comp-cross"><i class="fas fa-times"></i></div>
-                </div>
-                <div class="comp-row">
-                    <div class="comp-feature">Presença de Alto Impacto</div><div class="comp-check"><i class="fas fa-check"></i></div><div class="comp-cross"><i class="fas fa-times"></i></div>
-                </div>
-            </div>
-        </section>
-
-        <div class="warning-wrapper">
-            <section class="warning-section">
-                <div class="warning-title">
-                    <span class="warning-icon"><i class="fas fa-exclamation-triangle"></i></span>Cuidado: O poder da visibilidade
-                </div>
-                <div class="warning-content">
-                    <strong>Este método remove a invisibilidade social. Você se tornará o foco.</strong>
-                    <p style="margin-top:10px;">O magnetismo pessoal traz consequências reais:</p>
-                    <ul>
-                        <li>Você atrairá atenção onde quer que vá, de forma natural.</li>
-                        <li>Esteja preparada para sustentar os olhares e a atenção que você vai atrair.</li>
-                    </ul>
-                    <p>Use esse poder para elevar sua vida pessoal e profissional.</p>
-                </div>
-            </section>
-        </div>
-    </div>
-
-    <div class="experience-wrapper">
-        <div class="wave-divider wave-top">
-             <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-white"></path>
-            </svg>
-        </div>
-
-        <div class="container experience-section">
-            <div class="exp-left">
-                <h2>O Que Você Vai Desenvolver</h2>
-                <ul class="exp-list">
-                    <li><span class="exp-icon">✨</span><div class="exp-text"><strong>Presença de Impacto:</strong> A capacidade de preencher o ambiente com sua energia e ser notada instantaneamente.</div></li>
-                    <li><span class="exp-icon">💃</span><div class="exp-text"><strong>Linguagem Corporal Magnética:</strong> Gestos e posturas que comunicam segurança, elegância e alto valor.</div></li>
-                    <li><span class="exp-icon">🛡️</span><div class="exp-text"><strong>Autoestima Blindada:</strong> Uma confiança interna que não depende de elogios externos para existir.</div></li>
-                    <li><span class="exp-icon">🌊</span><div class="exp-text"><strong>Energia Feminina Fluida:</strong> O equilíbrio perfeito entre suavidade e força que torna você única.</div></li>
-                </ul>
-            </div>
-            <div class="stats-container">
-                <div class="stat-item">
-                    <div class="circle-chart c-91"><div class="circle-inner">92%</div></div>
-                    <div class="stat-desc">sentiram um aumento imediato na autoconfiança e segurança</div>
-                </div>
-                <div class="stat-item">
-                    <div class="circle-chart c-89"><div class="circle-inner">89%</div></div>
-                    <div class="stat-desc">notaram que as pessoas as tratam com mais deferência e respeito</div>
-                </div>
-                <div class="stat-item">
-                    <div class="circle-chart c-95"><div class="circle-inner">95%</div></div>
-                    <div class="stat-desc">relataram abrir novas portas profissionais e sociais naturalmente</div>
+            <div class="hero-visual">
+                <!-- Imagem com alto contraste (Inspiração Saúde/Respiração) -->
+                <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Respirando Livremente">
+                
+                <div class="stat-card bottom-right">
+                    <h4>10.000+</h4>
+                    <p>Alunos Livres</p>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="container">
-        <section class="game-section">
-            <div class="game-text">
-                <h2>Pare de tentar se encaixar. Comece a brilhar.</h2>
-                <p>Quando você ativa seu código pessoal de atração, o esforço desaparece e o fluxo começa.</p>
+    <!-- MISSÃO -->
+    <section class="mission-section" id="sobre">
+        <div class="container mission-content">
+            <i class="fas fa-quote-left" style="font-size: 2.5rem; margin-bottom: 25px; color: var(--accent-gold);"></i>
+            <h2>A Plataforma Respira é mais do que áudios online.</h2>
+            <p>
+                É um espaço global onde milhares de pessoas descobrem uma verdade simples: a liberdade do vício está ao alcance de todos — de forma leve, sem engordar e sem depender de pílulas.
+            </p>
+            <p style="font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 40px; font-weight: 700; color: var(--accent-gold);">
+                Nosso Objetivo: Educar e libertar mentes através da neurociência.
+            </p>
+        </div>
+    </section>
+
+    <!-- O QUE VOCÊ VAI ENCONTRAR -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>O Que Você Encontra na Plataforma</h2>
+                <p style="color: var(--text-light); font-size: 1.1rem;">Técnicas aplicadas na clínica, agora no seu celular.</p>
             </div>
-            <div class="ba-container">
-                <div class="ba-col ba-before">
-                    <div class="text-center"><span class="ba-header">Antes do Código</span></div>
-                    <div class="ba-list">
-                        <div>Insegura com a própria imagem <i class="fas fa-times-circle icon-cross"></i></div>
-                        <div>Sente-se uma fraude às vezes <i class="fas fa-times-circle icon-cross"></i></div>
-                        <div>Evita ser o centro das atenções <i class="fas fa-times-circle icon-cross"></i></div>
-                        <div>Busca aprovação alheia <i class="fas fa-times-circle icon-cross"></i></div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-brain feature-icon"></i>
+                    <h3>Práticas de Reprogramação</h3>
+                    <p>Exercícios auditivos que acessam o subconsciente para quebrar a associação neural entre estresse e cigarro.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-headphones-alt feature-icon"></i>
+                    <h3>Áudios SOS para Fissura</h3>
+                    <p>Técnicas de 3 minutos para utilizar em momentos de vontade aguda, bloqueando o impulso quase instantaneamente.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-bed feature-icon"></i>
+                    <h3>Hipnoterapia Noturna</h3>
+                    <p>Ondas Theta sincronizadas com scripts clínicos para você ouvir enquanto dorme, recondicionando a mente sem esforço.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt feature-icon"></i>
+                    <h3>Base Comprovada</h3>
+                    <p>Todo o conhecimento é estruturado de forma prática, focando em resultados efetivos na mudança de comportamento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BIBLIOTECA DE CURSOS / ÁUDIOS -->
+    <section class="library-section" id="cursos">
+        <div class="container">
+            <div class="library-top">
+                <div>
+                    <h2>Biblioteca de Protocolos</h2>
+                    <p style="color: var(--text-light); margin-top: 10px; font-size: 1.1rem;">Programas desenvolvidos para quebrar o vício rapidamente.</p>
+                </div>
+                <div style="font-size: 1rem; font-weight: 700; cursor: pointer; color: var(--bg-dark); text-transform: uppercase; letter-spacing: 1px;">
+                    Ver todos <i class="fas fa-arrow-right" style="color: var(--accent-gold); margin-left: 5px;"></i>
+                </div>
+            </div>
+            
+            <div class="courses-scroll">
+                <!-- Card 1 -->
+                <div class="course-card">
+                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="course-body">
+                        <div class="course-rating"><i class="fas fa-star"></i> 4.9 <span style="margin-left:5px;">5.367 alunos</span></div>
+                        <h4 class="course-title">Desafio 7 Dias: Quebra de Gatilhos Subconscientes</h4>
+                        <div class="course-footer">
+                            <button class="btn-buy">INCLUÍDO</button>
+                            <a href="#" class="learn-more">Saiba mais</a>
+                        </div>
                     </div>
                 </div>
-                <div class="ba-col ba-after">
-                    <div class="text-center"><span class="ba-header">Depois do Código</span></div>
-                    <div class="ba-list">
-                        <div>Segura e confortável na pele <i class="fas fa-check-circle icon-check"></i></div>
-                        <div>Reconhece seu próprio valor <i class="fas fa-check-circle icon-check"></i></div>
-                        <div>Ocupa espaço com naturalidade <i class="fas fa-check-circle icon-check"></i></div>
-                        <div>Atrai validação sem pedir <i class="fas fa-check-circle icon-check"></i></div>
+
+                <!-- Card 2 -->
+                <div class="course-card">
+                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="course-body">
+                        <div class="course-rating"><i class="fas fa-star"></i> 4.9 <span style="margin-left:5px;">4.599 alunos</span></div>
+                        <h4 class="course-title">Áudio SOS: Controle de Ansiedade e Fissura</h4>
+                        <div class="course-footer">
+                            <button class="btn-buy">INCLUÍDO</button>
+                            <a href="#" class="learn-more">Saiba mais</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="course-card">
+                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1511295742362-92c96b12a3d9?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="course-body">
+                        <div class="course-rating"><i class="fas fa-star"></i> 4.8 <span style="margin-left:5px;">3.523 alunos</span></div>
+                        <h4 class="course-title">Reprogramação Noturna: Ondas Theta para Fumantes</h4>
+                        <div class="course-footer">
+                            <button class="btn-buy">INCLUÍDO</button>
+                            <a href="#" class="learn-more">Saiba mais</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="course-card">
+                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1554244933-d876deb6b2ff?auto=format&fit=crop&w=600&q=80');"></div>
+                    <div class="course-body">
+                        <div class="course-rating"><i class="fas fa-star"></i> 4.9 <span style="margin-left:5px;">2.112 alunos</span></div>
+                        <h4 class="course-title">Blindagem Mental: Prevenindo Recaídas e Estresse</h4>
+                        <div class="course-footer">
+                            <button class="btn-buy">INCLUÍDO</button>
+                            <a href="#" class="learn-more">Saiba mais</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section class="guarantee-section">
-            <h2>Teste seu magnetismo por 30 dias.</h2>
-            <p>Se você aplicar os princípios e não sentir uma mudança profunda na sua autoimagem e na forma como o mundo reage a você, devolvemos 100% do seu dinheiro.</p>
-            <p>Sua transformação é nossa prioridade absoluta.</p>
-        </section>
-
-        <div class="testimonials-wrapper">
-            <div class="text-center" style="margin-bottom: 40px;">
-                <h2 style="font-size: 2rem;">Histórias de Transformação</h2>
+            
+            <div class="text-center" style="margin-top: 60px;">
+                <!-- BOTÃO DE CHECKOUT AQUI -->
+                <a href="SEU_LINK_DE_CHECKOUT_AQUI" class="btn-cta">
+                    <span class="btn-main-text">DESBLOQUEAR TODOS OS ÁUDIOS</span>
+                    <span class="subtext">Acesso vitalício por R$ 18,90 (Pagamento Único)</span>
+                </a>
             </div>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <i class="fas fa-quote-right quote-icon"></i>
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <div class="review-title">Minha carreira mudou.</div>
-                    <div class="review-body">"Sempre fui competente, mas invisível. Depois que ajustei minha postura e energia, fui promovida e ouvida em reuniões como nunca antes."</div>
-                    <div class="review-author">Carla R.</div>
+        </div>
+    </section>
+
+    <!-- PERKS (HERE'S WHAT YOU GET) -->
+    <section class="perks-section">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; max-width: 800px;">Isto não é apenas um curso. É o seu suporte diário para a liberdade.</h2>
+            
+            <div class="perks-list">
+                <div class="perk-item">
+                    <i class="fas fa-calendar-check"></i>
+                    <div class="perk-info">
+                        <h4>Protocolo de 7 Dias</h4>
+                        <p>Sessões guiadas sequenciais para reescrever o hábito subconsciente dia após dia.</p>
+                    </div>
                 </div>
-                <div class="review-card">
-                    <i class="fas fa-quote-right quote-icon"></i>
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <div class="review-title">Me sinto radiante.</div>
-                    <div class="review-body">"Não mudei meu corpo, mudei como me vejo. E incrível como as pessoas reagem diferente. Recebo elogios e sorrisos por onde passo."</div>
-                    <div class="review-author">Beatriz M.</div>
+                <div class="perk-item">
+                    <i class="fas fa-infinity"></i>
+                    <div class="perk-info">
+                        <h4>Acesso Ilimitado</h4>
+                        <p>Explore a biblioteca no seu próprio ritmo, ouvindo quantas vezes precisar.</p>
+                    </div>
                 </div>
-                <div class="review-card">
-                    <i class="fas fa-quote-right quote-icon"></i>
-                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <div class="review-title">Não passo mais despercebida.</div>
-                    <div class="review-body">"Aprendi a usar meus traços a meu favor. A confiança que sinto agora é silenciosa, mas todo mundo nota. Me sinto poderosa."</div>
-                    <div class="review-author">Larissa S.</div>
+                <div class="perk-item">
+                    <i class="fas fa-users"></i>
+                    <div class="perk-info">
+                        <h4>Comunidade Exclusiva</h4>
+                        <p>Conecte-se com pessoas que compartilham da mesma jornada no fórum da plataforma.</p>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- DEPOIMENTOS / BEFORE & AFTER -->
+    <section class="ba-section" id="depoimentos">
+        <div class="container">
             <div class="text-center">
-                <!-- BOTÃO CTA 2 -->
-                <a href="SEU_LINK_DE_CHECKOUT_AQUI" class="btn-cta" style="max-width: 500px; margin: 0 auto;">QUERO DESCOBRIR O CÓDIGO</a>
+                <h2>Resultados Reais. Pessoas Reais.</h2>
+                <p style="margin-top: 15px; font-size: 1.1rem;">O que acontece após os 7 dias de reprogramação.</p>
+            </div>
+            
+            <div class="ba-grid">
+                <!-- Depoimento 1 -->
+                <div class="ba-card">
+                    <div class="ba-quote">"Eu não conseguia tomar um simples café sem acender um cigarro. O áudio cortou essa associação neural de forma inacreditável."</div>
+                    <div class="ba-results">
+                        <p>Após a Reprogramação:</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Indiferença total ao cheiro de fumaça.</li>
+                            <li><i class="fas fa-check"></i> Olfato e paladar 100% recuperados.</li>
+                            <li><i class="fas fa-check"></i> Fim da tosse matinal.</li>
+                        </ul>
+                    </div>
+                    <div class="ba-meta">Carlos M. | Livre há: 8 meses</div>
+                </div>
+                
+                <!-- Depoimento 2 -->
+                <div class="ba-card">
+                    <div class="ba-quote">"Eu mudei completamente. Meu maior medo era engordar se parasse, mas o módulo de controle de ansiedade evitou a compulsão."</div>
+                    <div class="ba-results">
+                        <p>Após a Reprogramação:</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Vontade automática desapareceu.</li>
+                            <li><i class="fas fa-check"></i> Sem ganho de peso (sem compulsão).</li>
+                            <li><i class="fas fa-check"></i> Fôlego restaurado e mais energia.</li>
+                        </ul>
+                    </div>
+                    <div class="ba-meta">Juliana S. | Livre há: 1 ano</div>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="footer-wrapper">
-        <div class="footer-wave">
-            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" style="width: 100%; height: 70px; display: block;">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-dark" transform="rotate(180, 600, 60)"></path>
-            </svg>
+    <!-- APP SECTION -->
+    <section class="app-section">
+        <div class="container app-grid">
+            <div class="app-text">
+                <h2 style="font-size: 3rem; margin-bottom: 25px;">Respira App — Sempre com Você</h2>
+                <p style="color: var(--text-light); margin-bottom: 35px; font-size: 1.15rem;">
+                    Todos os protocolos terapêuticos na palma da sua mão. Com o acesso mobile você garante a blindagem da sua mente em qualquer lugar.
+                </p>
+                
+                <ul style="list-style: none; margin-bottom: 50px;">
+                    <li style="margin-bottom: 18px; display: flex; gap: 15px; align-items: center; font-weight: 500;"><i class="fas fa-check-circle" style="color: var(--accent-gold); font-size: 1.2rem;"></i> Áudios SOS para momentos de estresse no trabalho.</li>
+                    <li style="margin-bottom: 18px; display: flex; gap: 15px; align-items: center; font-weight: 500;"><i class="fas fa-check-circle" style="color: var(--accent-gold); font-size: 1.2rem;"></i> Modo noturno com tela apagada.</li>
+                    <li style="margin-bottom: 18px; display: flex; gap: 15px; align-items: center; font-weight: 500;"><i class="fas fa-check-circle" style="color: var(--accent-gold); font-size: 1.2rem;"></i> Novas sessões guiadas adicionadas mensalmente.</li>
+                </ul>
+                
+                <!-- BOTÃO DE CHECKOUT AQUI -->
+                <a href="https://www.ggcheckout.com/checkout/v4/fRimbgdjPjwLp8uZV3ki" class="btn-cta">
+                    <span class="btn-main-text">COMEÇAR MINHA JORNADA</span>
+                    <span class="subtext">Por apenas R$ 18,90 (Pagamento Único)</span>
+                </a>
+            </div>
+            
+            <div>
+                <!-- CSS Phone Mockup -->
+                <div class="phone-mockup">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <div class="app-title">RESPIRA</div>
+                        
+                        <div class="app-track">
+                            <div class="app-track-icon"><i class="fas fa-play" style="font-size: 1rem;"></i></div>
+                            <div class="app-track-info">
+                                <div>Dia 1: Quebrando a Rotina</div>
+                                <div>18 min • Ondas Theta</div>
+                            </div>
+                        </div>
+                        
+                        <div class="app-track">
+                            <div class="app-track-icon"><i class="fas fa-play" style="font-size: 1rem;"></i></div>
+                            <div class="app-track-info">
+                                <div>Áudio SOS Ansiedade</div>
+                                <div>3 min • Foco Imediato</div>
+                            </div>
+                        </div>
+                        
+                        <div class="app-track" style="opacity: 0.5;">
+                            <div class="app-track-icon"><i class="fas fa-lock" style="font-size: 1rem;"></i></div>
+                            <div class="app-track-info">
+                                <div>Dia 2: Substituição Saudável</div>
+                                <div>22 min • Hipnoterapia</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <footer>
-            <p>&copy; 2024 Divinely Feminine. Todos os direitos reservados.</p>
-            <p style="margin-top: 10px; color: #555;">Termos de Serviço | Política de Privacidade</p>
-        </footer>
-    </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">MÉTODO RESPIRA</div>
+                    <p class="footer-text">
+                        Acesso completo à saúde mental e liberdade do vício. Reprograme seus hábitos e viva com energia, saúde e propósito.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Plataforma</h4>
+                    <ul>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Áudios e Cursos</a></li>
+                        <li><a href="#">Depoimentos</a></li>
+                        <li><a href="#">Fale Conosco</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Aviso Médico</a></li>
+                        <li><a href="#">Política de Reembolso</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Todos os serviços e informações neste site têm fins educacionais e não substituem aconselhamento médico. © 2026 Plataforma Respira. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
