@@ -3,771 +3,493 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Plataforma Respira - Reprogramação Mental de 7 Dias</title>
+    <title>Quiz: Seu Perfil de Dependência</title>
     
-    <!-- Importando Fonte Poppins -->
+    <!-- Importando Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Ícones -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
     <style>
-        /* --- DESIGN SYSTEM: PREMIUM HIGH-CONTRAST (Inspirado em fp-platform) --- */
+        /* --- DESIGN SYSTEM ADAPTADO (MÉTODO RESPIRA) --- */
         :root {
-            /* Cores Principais - Alto Contraste & Elegância */
-            --bg-body: #F5F4F0;       /* Bege muito claro/Off-white quente */
-            --bg-card: #FFFFFF;       /* Branco puro para destacar cards */
-            --bg-dark: #111111;       /* Preto rico */
-            --bg-alt: #EBE7DF;        /* Bege intermediário para seções secundárias */
+            --primary-action: #0d9488; /* Turquesa Profundo (Ar/Saúde/Ação) */
+            --alert-red: #ef4444;      /* Vermelho para o Vício/Alerta */
+            --navy-deep: #111827;      /* Cinza Quase Preto (Seriedade) */
+            --bg-mint-light: #f0fdfa;  /* Fundo Menta Suave */
+            --text-dark: #134e4a;
+            --text-light: #64748b;
+            --success-green: #10b981;
             
-            /* Texto */
-            --text-main: #111111;     /* Quase preto */
-            --text-light: #5A5A58;    /* Cinza escuro */
-            --text-inverse: #FFFFFF;  /* Branco */
-            
-            /* Destaques e Botões */
-            --accent-black: #000000;
-            --accent-gold: #C29B62;   /* Dourado/Bronze elegante */
-            --border-color: #DCD7CD;
-            
-            /* Fontes */
+            --font-serif: 'Playfair Display', serif;
             --font-main: 'Poppins', sans-serif;
-            
-            /* UI */
-            --radius-sm: 8px;
-            --radius-md: 16px;
-            --radius-lg: 24px;
-            --shadow-soft: 0 15px 35px -10px rgba(0,0,0,0.08);
-            --shadow-hard: 0 20px 40px rgba(0,0,0,0.2);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
+        
         body {
             font-family: var(--font-main);
-            color: var(--text-main);
-            line-height: 1.6;
-            background-color: var(--bg-body);
-            overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        h1, h2, h3, h4 { 
-            font-family: var(--font-main); 
-            font-weight: 700; 
-            color: var(--text-main); 
-            line-height: 1.2;
-            letter-spacing: -0.5px;
-        }
-        
-        p, li, a, button, span { font-family: var(--font-main); }
-        img { max-width: 100%; display: block; object-fit: cover; }
-        a { text-decoration: none; color: inherit; }
-
-        /* --- UTILITÁRIOS --- */
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        
-        .text-center { text-align: center; }
-        
-        /* --- SCARCITY TOP BAR --- */
-        .top-scarcity-bar {
-            background-color: var(--bg-dark);
-            color: var(--bg-body);
-            padding: 12px 0;
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-align: center;
-            letter-spacing: 0.5px;
-            z-index: 1001;
-            position: relative;
-        }
-        .top-scarcity-bar strong {
-            color: var(--accent-gold);
-            font-weight: 700;
-        }
-        .top-scarcity-bar .badge {
-            background-color: var(--accent-gold);
-            color: var(--bg-dark);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-weight: 800;
-            margin: 0 4px;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-        }
-
-        /* Botões */
-        .btn-cta {
-            background: var(--accent-black);
-            color: var(--text-inverse);
-            display: inline-flex;
-            flex-direction: column;
+            color: var(--navy-deep);
+            /* Gradiente: Do cinza "fumaça" para o turquesa "ar limpo" */
+            background: linear-gradient(135deg, #2d3748 0%, #0f766e 100%);
+            min-height: 100vh;
+            display: flex;
             align-items: center;
             justify-content: center;
-            padding: 18px 40px;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
-            border: 2px solid var(--accent-black);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-            font-size: 1rem;
-            text-decoration: none;
-        }
-        .btn-cta:hover { 
-            background: transparent; 
-            color: var(--accent-black);
-        }
-        .btn-cta:hover .subtext { color: var(--accent-black); }
-        
-        .btn-cta .subtext {
-            font-size: 0.75rem;
-            font-weight: 500;
-            text-transform: none;
-            color: rgba(255,255,255,0.7);
-            margin-top: 4px;
-            letter-spacing: 0;
-            transition: color 0.3s ease;
+            padding: 20px;
         }
 
-        /* --- HEADER / NAV --- */
-        header {
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            background: rgba(245, 244, 240, 0.95);
-            backdrop-filter: blur(15px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 1.6rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            text-transform: uppercase;
-        }
-        .logo span { 
-            font-weight: 300; 
-            font-size: 1.4rem; 
-            margin-left: 5px; 
-            color: var(--text-light); 
-        }
-        
-        .nav-links { display: flex; gap: 35px; font-size: 0.95rem; font-weight: 500; }
-        .nav-links a { position: relative; padding-bottom: 4px; }
-        .nav-links a::after {
-            content: ''; position: absolute; width: 0; height: 2px;
-            bottom: 0; left: 0; background-color: var(--accent-gold);
-            transition: width 0.3s;
-        }
-        .nav-links a:hover::after { width: 100%; }
-        
-        .nav-actions { display: flex; align-items: center; gap: 20px; }
-        .login-btn { font-size: 0.95rem; font-weight: 600; border-bottom: 2px solid transparent; transition: 0.3s; }
-        .login-btn:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
-        
-        .mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            padding: 100px 0;
-            overflow: hidden;
-            background: var(--bg-body);
-        }
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        
-        .hero-content .membership-tag {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--accent-gold);
-            margin-bottom: 25px;
-            display: inline-block;
-            font-weight: 700;
-        }
-        .hero-content h1 {
-            font-size: 4.2rem;
-            line-height: 1.05;
-            margin-bottom: 24px;
-        }
-        .hero-content p {
-            font-size: 1.15rem;
-            color: var(--text-light);
-            margin-bottom: 40px;
-            max-width: 90%;
-            font-weight: 400;
-        }
-
-        .hero-visual {
-            position: relative;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-hard);
-        }
-        .hero-visual img {
+        /* --- CONTAINER DO QUIZ --- */
+        .quiz-card {
+            background: #ffffff;
             width: 100%;
-            height: 650px;
-            object-fit: cover;
-        }
-        
-        /* Floating Stats Cards */
-        .stat-card {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 15px 25px;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-soft);
-            border: 1px solid rgba(255,255,255,0.5);
-            bottom: 40px; 
-            right: -20px;
-        }
-        
-        .stat-card h4 { font-size: 1.3rem; font-weight: 800; margin-bottom: 2px; color: var(--accent-gold); }
-        .stat-card p { font-size: 0.85rem; color: var(--text-main); font-weight: 600; margin: 0; text-transform: uppercase; }
-
-        /* --- MISSION & GOAL --- */
-        .mission-section {
-            background-color: var(--bg-dark);
-            color: var(--text-inverse);
-            padding: 120px 0;
-            text-align: center;
-        }
-        .mission-content { max-width: 850px; margin: 0 auto; }
-        .mission-content h2 { font-size: 2.8rem; margin-bottom: 30px; color: var(--bg-body); }
-        .mission-content p { font-size: 1.2rem; color: #A0A0A0; margin-bottom: 40px; font-weight: 300; line-height: 1.8; }
-
-        /* --- WHAT YOU'LL FIND --- */
-        .features-section { padding: 120px 0; background: var(--bg-alt); }
-        .section-header { text-align: center; margin-bottom: 70px; }
-        .section-header h2 { font-size: 3rem; margin-bottom: 15px; }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-        }
-        .feature-card {
-            background: var(--bg-card);
-            padding: 45px 35px;
-            border-radius: var(--radius-md);
-            box-shadow: var(--shadow-soft);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .feature-card:hover { 
-            transform: translateY(-8px); 
-            box-shadow: var(--shadow-hard);
-            border-color: var(--accent-gold);
-        }
-        .feature-icon {
-            font-size: 2.2rem;
-            color: var(--accent-gold);
-            margin-bottom: 25px;
-        }
-        .feature-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 15px; }
-        .feature-card p { font-size: 0.95rem; color: var(--text-light); }
-
-        /* --- COURSE / AUDIO LIBRARY --- */
-        .library-section { padding: 120px 0; background: var(--bg-body); }
-        .library-top { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; }
-        .library-top h2 { font-size: 2.8rem; }
-        
-        .courses-scroll {
-            display: flex;
-            gap: 30px;
-            overflow-x: auto;
-            padding-bottom: 40px;
-            scrollbar-width: none; 
-        }
-        .courses-scroll::-webkit-scrollbar { display: none; }
-        
-        .course-card {
-            min-width: 340px;
-            background: var(--bg-card);
-            border-radius: var(--radius-md);
+            max-width: 650px;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            padding: 40px;
+            position: relative;
             overflow: hidden;
-            border: 1px solid var(--border-color);
+            text-align: center;
+            border-top: 5px solid var(--primary-action);
+        }
+
+        /* Barra de Progresso */
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            margin-bottom: 30px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            background: var(--primary-action);
+            width: 0%;
+            transition: width 0.4s ease;
+        }
+
+        /* Tipografia Header */
+        h1 {
+            font-family: var(--font-main);
+            font-weight: 800;
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+            color: var(--navy-deep);
+            line-height: 1.3;
+            text-transform: uppercase;
+        }
+        
+        p.intro {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            margin-bottom: 35px;
+            line-height: 1.8;
+        }
+
+        /* ANIMAÇÕES DE TEXTO (Header) */
+        .word-despair {
+            display: inline-block;
+            font-weight: 600;
+            color: var(--alert-red);
+            text-decoration: line-through;
+            opacity: 0.8;
+        }
+
+        .word-power {
+            display: inline-block;
+            font-weight: 800;
+            color: var(--primary-action);
+            position: relative;
+            animation: breathe-pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes breathe-pulse {
+            0% { transform: scale(1); text-shadow: 0 0 5px rgba(13, 148, 136, 0.1); }
+            50% { transform: scale(1.05); text-shadow: 0 0 15px rgba(13, 148, 136, 0.4); }
+            100% { transform: scale(1); text-shadow: 0 0 5px rgba(13, 148, 136, 0.1); }
+        }
+
+        /* PERGUNTAS */
+        .question-box {
+            display: none; 
+            animation: fadeIn 0.5s ease;
+        }
+        .question-box.active { display: block; }
+
+        .question-text {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            color: var(--navy-deep);
+        }
+
+        .options-grid {
             display: flex;
             flex-direction: column;
-            transition: 0.3s;
+            gap: 12px;
         }
-        .course-card:hover { border-color: var(--accent-gold); }
-        .course-img {
-            height: 220px;
-            background-size: cover;
-            background-position: center;
+
+        .option-btn {
+            background: #fff;
+            border: 1px solid #cbd5e1;
+            padding: 16px 20px;
+            border-radius: 8px;
+            text-align: left;
+            cursor: pointer;
+            font-family: var(--font-main);
+            font-size: 0.95rem;
+            color: var(--text-light);
+            transition: all 0.2s ease;
+            position: relative;
+            font-weight: 500;
         }
-        .course-body { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
-        .course-rating {
-            display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; color: var(--text-light); margin-bottom: 15px;
+
+        .option-btn:hover {
+            border-color: var(--primary-action);
+            background-color: var(--bg-mint-light);
+            color: var(--text-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(15, 23, 42, 0.1);
         }
-        .course-rating i { color: var(--accent-gold); }
-        .course-title { font-size: 1.2rem; line-height: 1.4; margin-bottom: 20px; flex-grow: 1; font-weight: 700; }
+
+        /* --- TELA DE RESULTADO --- */
+        .result-box {
+            display: none;
+            animation: fadeIn 0.8s ease;
+            text-align: center;
+        }
         
-        .course-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 20px; }
-        
-        .btn-buy { 
-            background: var(--bg-dark); 
-            color: var(--text-inverse); 
-            padding: 10px 20px; 
-            border-radius: 4px; 
-            font-size: 0.85rem; 
-            font-weight: 700; 
-            border: none;
-            cursor: pointer; 
+        .result-icon {
+            font-size: 3rem;
+            color: var(--alert-red); 
+            margin-bottom: 10px;
+        }
+
+        .result-title {
+            font-size: 1.6rem;
+            color: var(--navy-deep);
+            font-family: var(--font-main);
+            font-weight: 700;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 15px;
+        }
+
+        .result-text {
+            text-align: left;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* --- GRÁFICO DE RESULTADO --- */
+        .graph-container {
+            background: #f1f5f9;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .graph-title {
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            color: #64748b;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
-        .learn-more { font-size: 0.85rem; font-weight: 600; text-decoration: underline; color: var(--text-main); }
-        .learn-more:hover { color: var(--accent-gold); }
 
-        /* --- PERKS (HERE'S WHAT YOU GET) --- */
-        .perks-section { padding: 100px 0; background: var(--bg-card); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
-        .perks-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 50px; margin-top: 60px; }
-        .perk-item { display: flex; gap: 20px; align-items: flex-start; }
-        .perk-item i { color: var(--accent-gold); font-size: 1.5rem; margin-top: 5px; }
-        .perk-info h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
-        .perk-info p { font-size: 0.95rem; color: var(--text-light); }
-
-        /* --- BEFORE & AFTER (TEXT BASED) --- */
-        .ba-section { padding: 120px 0; background: var(--bg-dark); color: var(--text-inverse); }
-        .ba-section h2 { color: var(--text-inverse); font-size: 3rem; }
-        .ba-section p { color: #A0A0A0; }
-        
-        .ba-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 60px; }
-        
-        .ba-card { 
-            background: #1A1A1A; 
-            padding: 45px; 
-            border-radius: var(--radius-md); 
-            border: 1px solid #333; 
+        .bar-wrapper {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
         }
-        .ba-quote { font-size: 1.15rem; font-style: italic; margin-bottom: 30px; color: var(--accent-glow); font-weight: 300; }
-        .ba-results { margin-bottom: 30px; }
-        .ba-results p { font-weight: 700; font-size: 0.9rem; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-gold); }
-        .ba-results ul { list-style: none; }
-        .ba-results li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: #CCCCCC; margin-bottom: 12px; }
-        .ba-results li i { color: var(--accent-gold); margin-top: 5px; font-size: 0.8rem; }
-        
-        .ba-meta { font-size: 0.85rem; color: #888; border-top: 1px solid #333; padding-top: 20px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* --- APP SECTION --- */
-        .app-section { padding: 120px 0; background: var(--bg-body); }
-        .app-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        
-        /* Simple Pure CSS Phone Mockup */
-        .phone-mockup {
-            width: 320px; height: 640px;
-            background: #fff; border: 14px solid var(--bg-dark);
-            border-radius: 45px; margin: 0 auto;
-            position: relative; overflow: hidden;
-            box-shadow: var(--shadow-hard);
+        .bar-label {
+            width: 30%;
+            font-size: 0.85rem;
+            text-align: right;
+            padding-right: 10px;
+            font-weight: 600;
+            color: #475569;
         }
-        .phone-notch { width: 140px; height: 30px; background: var(--bg-dark); position: absolute; top: 0; left: 50%; transform: translateX(-50%); border-radius: 0 0 20px 20px; z-index: 10;}
-        .phone-screen { padding: 70px 25px 25px; background: linear-gradient(135deg, #FFFFFF 0%, #F5F4F0 100%); height: 100%; display: flex; flex-direction: column; }
-        .app-title { font-size: 1.8rem; font-weight: 800; text-align: center; margin-bottom: 35px; color: var(--bg-dark); letter-spacing: -1px; }
+
+        .bar-track {
+            flex-grow: 1;
+            background: #e2e8f0;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 8px;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            width: 0%; /* Começa em 0 para animar */
+        }
+
+        /* Animação da Barra "Força de Vontade" (Baixa) */
+        .fill-low {
+            background-color: #94a3b8;
+            animation: grow-low 2s ease-out forwards;
+        }
+        @keyframes grow-low { to { width: 5%; } }
+
+        /* Animação da Barra "Método Respira" (Alta) */
+        .fill-high {
+            background: linear-gradient(90deg, #14b8a6, #0d9488);
+            animation: grow-high 2.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            position: relative;
+        }
+        @keyframes grow-high { to { width: 95%; } }
         
-        .app-track { background: #fff; padding: 18px; border-radius: 16px; margin-bottom: 15px; display: flex; align-items: center; gap: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.04); border: 1px solid var(--border-color); }
-        .app-track-icon { width: 45px; height: 45px; background: var(--bg-dark); border-radius: 10px; display: flex; justify-content: center; align-items: center; color: var(--accent-gold); }
-        .app-track-info div:first-child { font-weight: 700; font-size: 0.9rem; color: var(--bg-dark); }
-        .app-track-info div:last-child { font-size: 0.75rem; color: var(--text-light); font-weight: 500; margin-top: 2px; }
+        .fill-high::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: translateX(-100%);
+            animation: shimmer 2s infinite;
+        }
+        @keyframes shimmer {
+            100% { transform: translateX(100%); }
+        }
 
-        /* --- FOOTER --- */
-        footer { background: var(--bg-card); padding: 80px 0 40px; border-top: 1px solid var(--border-color); }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; margin-bottom: 60px; }
-        .footer-logo { font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; letter-spacing: -1px; }
-        .footer-text { font-size: 0.95rem; color: var(--text-light); max-width: 320px; }
-        .footer-links h4 { font-size: 1rem; font-weight: 700; margin-bottom: 25px; text-transform: uppercase; color: var(--bg-dark); }
-        .footer-links ul { list-style: none; }
-        .footer-links li { margin-bottom: 12px; font-size: 0.9rem; color: var(--text-light); font-weight: 500; }
-        .footer-links a:hover { color: var(--accent-gold); }
-        .footer-bottom { text-align: center; border-top: 1px solid var(--border-color); padding-top: 30px; font-size: 0.8rem; color: #999; }
+        .graph-note {
+            font-size: 0.75rem;
+            color: var(--primary-action);
+            margin-top: 10px;
+            font-weight: 600;
+        }
 
-        @media (max-width: 900px) {
-            .nav-links, .login-btn { display: none; }
-            .mobile-menu-btn { display: block; }
-            
-            /* Ajuste de espaçamento vertical no mobile para aproximar o conteúdo do cabeçalho */
-            .hero { padding: 40px 0 80px; }
-            
-            .hero-grid, .app-grid { grid-template-columns: 1fr; gap: 40px; }
-            .hero-content { text-align: center; }
-            .hero-content p { max-width: 100%; margin: 0 auto 30px; }
-            .hero-content h1 { font-size: 3.2rem; }
-            .stat-card { bottom: 20px; right: 20px; }
-            
-            .perks-list { grid-template-columns: 1fr; gap: 40px; }
-            .footer-grid { grid-template-columns: 1fr; }
-            
-            .library-top { flex-direction: column; align-items: flex-start; gap: 20px; }
+        /* --- Highlight Box --- */
+        .result-highlight {
+            background: var(--bg-mint-light);
+            padding: 15px;
+            border-left: 4px solid var(--primary-action);
+            margin: 20px 0;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: left;
+            color: var(--text-dark);
+        }
+
+        /* BOTÃO CTA */
+        .btn-cta {
+            background-color: var(--success-green);
+            color: white;
+            display: block;
+            width: 100%;
+            padding: 20px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+            text-decoration: none;
+            margin-top: 25px;
+        }
+        .btn-cta:hover { 
+            background-color: #059669; 
+            transform: translateY(-3px); 
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+            .quiz-card { padding: 30px 20px; }
+            h1 { font-size: 1.4rem; }
+            .option-btn { padding: 14px 15px; font-size: 0.9rem; }
+            .bar-label { width: 40%; font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- AVISO DE ESCASSEZ NA BARRA SUPERIOR -->
-    <div class="top-scarcity-bar">
-        <div class="container">
-            <i class="fas fa-door-open" style="color: var(--accent-gold); margin-right: 8px;"></i> 
-            Vagas Abertas: Oferta liberada somente para os <span class="badge">15 primeiros</span>
+    <div class="quiz-card">
+        
+        <!-- HEADER DO QUIZ -->
+        <div id="quiz-header">
+            <div style="font-size: 0.85rem; color: #64748b; letter-spacing: 1.5px; margin-bottom: 8px; font-weight: 600;">MAPEAMENTO RÁPIDO</div>
+            <h1>Você controla o cigarro ou ele controla você?</h1>
+            
+            <p class="intro">
+                Descubra em 30 segundos o que está bloqueando sua liberdade.<br>
+                Abandone o <span class="word-despair">hábito</span> e retome o <span class="word-power">controle</span>.
+            </p>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
         </div>
+
+        <!-- PERGUNTAS (Renderizadas via JS) -->
+        <div id="quiz-content"></div>
+
+        <!-- RESULTADO (Oculto inicialmente) -->
+        <div id="quiz-result" class="result-box">
+            <div class="result-icon"><i class="fas fa-brain"></i></div>
+            <div class="result-title">Diagnóstico: Vício Subconsciente Detectado.</div>
+            
+            <div class="result-text">
+                <p>Suas respostas revelam que o cigarro não é apenas um hábito químico, mas uma <strong>muleta emocional</strong> enraizada na sua mente. É por isso que tentar parar "na força de vontade" falha.</p>
+                
+                <!-- GRÁFICO VISUAL -->
+                <div class="graph-container">
+                    <div class="graph-title">Chance de Sucesso Definitivo</div>
+                    
+                    <div class="bar-wrapper">
+                        <div class="bar-label">Método Tradicional</div>
+                        <div class="bar-track">
+                            <div class="bar-fill fill-low">3%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="bar-wrapper">
+                        <div class="bar-label" style="color:var(--primary-action)">Método Respira</div>
+                        <div class="bar-track">
+                            <div class="bar-fill fill-high">93%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="graph-note"><i class="fas fa-clock"></i> Reprogramação neural em apenas 21 dias</div>
+                </div>
+
+                <p>O <strong>Método Respira</strong> vai direto à raiz do problema no seu subconsciente, desligando o gatilho da ansiedade antes que a vontade apareça.</p>
+                
+                <div class="result-highlight">
+                    Não lute contra o vício. Reprograme sua mente para esquecer que ele existe.
+                </div>
+            </div>
+
+            <a href="https://metodorespira.vercel.app/" class="btn-cta">QUERO REPROGRAMAR MINHA MENTE AGORA <i class="fas fa-arrow-right"></i></a>
+        </div>
+
     </div>
 
-    <!-- NAVEGAÇÃO -->
-    <header>
-        <div class="container navbar">
-            <div class="logo">MÉTODO<span>RESPIRA</span></div>
-            <div class="nav-links">
-                <a href="#sobre">Sobre a Metodologia</a>
-                <a href="#cursos">Biblioteca de Áudios</a>
-                <a href="#depoimentos">Resultados</a>
-                <a href="#faq">FAQ</a>
-            </div>
-            <div class="nav-actions">
-                <a href="#" class="login-btn">Entrar</a>
-                <i class="fas fa-bars mobile-menu-btn"></i>
-            </div>
-        </div>
-    </header>
+    <script>
+        // --- QUIZ REDUZIDO E OTIMIZADO PARA CONVERSÃO ---
+        const questions = [
+            {
+                question: "1. Qual é a sua relação com o cigarro logo pela manhã?",
+                options: [
+                    "É a primeira coisa que faço (nos primeiros 30 min).",
+                    "Fumo logo após o café para 'ligar' o cérebro.",
+                    "Consigo esperar, só fumo quando saio de casa.",
+                    "Não tenho horário fixo, fumo quando o estresse bate."
+                ]
+            },
+            {
+                question: "2. O que acontece quando você tenta parar de fumar?",
+                options: [
+                    "A ansiedade fica insuportável e volto a fumar.",
+                    "Sinto que perco minha única forma de relaxar.",
+                    "Até consigo por uns dias, mas uma crise me faz recair.",
+                    "Nunca tentei de verdade por medo de falhar."
+                ]
+            },
+            {
+                question: "3. Se existisse um 'botão' que desligasse a vontade de fumar do seu cérebro hoje, você apertaria?",
+                options: [
+                    "Sim! Não aguento mais gastar saúde e dinheiro.",
+                    "Com certeza, quero me sentir livre novamente.",
+                    "Sim, se fosse algo natural e sem remédios fortes.",
+                    "Tenho medo, mas sei que preciso parar urgentemente."
+                ]
+            }
+        ];
 
-    <!-- HERO SECTION -->
-    <section class="hero">
-        <div class="container hero-grid">
-            <div class="hero-content">
-                <div class="membership-tag">Plataforma Exclusiva</div>
-                <h1>Pare de Fumar<br>sem esforço.</h1>
-                <p>
-                    Acesso completo à reprogramação mental contra o tabagismo. 
-                    Experimente práticas guiadas de hipnoterapia que desligam o impulso automático de fumar em apenas 7 dias, restaurando sua saúde sem esforço excessivo.
-                </p>
-                
-                <!-- BOTÃO DE CHECKOUT AQUI -->
-                <a href="https://www.ggcheckout.com/checkout/v4/GimLqOi9HnEbfUSXcf2h" class="btn-cta">
-                    <span class="btn-main-text">DESBLOQUEAR ACESSO</span>
-                    <span class="subtext">Por R$ 16,90 (Pagamento Único) para os 15 primeiros</span>
-                </a>
-            </div>
+        let currentQuestionIndex = 0;
+        const quizContent = document.getElementById('quiz-content');
+        const progressBar = document.getElementById('progressBar');
+        const quizHeader = document.getElementById('quiz-header');
+        const quizResult = document.getElementById('quiz-result');
+
+        function loadQuestion() {
+            // Atualiza barra de progresso
+            const progress = ((currentQuestionIndex) / questions.length) * 100;
+            progressBar.style.width = `${progress}%`;
+
+            // Limpa conteúdo anterior
+            quizContent.innerHTML = '';
+
+            const q = questions[currentQuestionIndex];
             
-            <div class="hero-visual">
-                <!-- Imagem com alto contraste (Inspiração Saúde/Respiração) -->
-                <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Respirando Livremente">
-                
-                <div class="stat-card bottom-right">
-                    <h4>6.000+</h4>
-                    <p>Alunos Livres</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            // Cria container da pergunta
+            const qBox = document.createElement('div');
+            qBox.className = 'question-box active';
 
-    <!-- MISSÃO -->
-    <section class="mission-section" id="sobre">
-        <div class="container mission-content">
-            <i class="fas fa-quote-left" style="font-size: 2.5rem; margin-bottom: 25px; color: var(--accent-gold);"></i>
-            <h2>A Plataforma Respira é mais do que áudios online.</h2>
-            <p>
-                É um espaço global onde milhares de pessoas descobrem uma verdade simples: a liberdade do vício está ao alcance de todos, de forma leve, sem engordar e sem depender de pílulas.
-            </p>
-            <p style="font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 40px; font-weight: 700; color: var(--accent-gold);">
-                Nosso Objetivo: Educar e libertar mentes através da neurociência.
-            </p>
-        </div>
-    </section>
+            // Título da pergunta
+            const qTitle = document.createElement('div');
+            qTitle.className = 'question-text';
+            qTitle.innerText = q.question;
+            qBox.appendChild(qTitle);
 
-    <!-- O QUE VOCÊ VAI ENCONTRAR -->
-    <section class="features-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>O Que Você Encontra na Plataforma</h2>
-                <p style="color: var(--text-light); font-size: 1.1rem;">Técnicas aplicadas na clínica, agora no seu celular.</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-brain feature-icon"></i>
-                    <h3>Práticas de Reprogramação</h3>
-                    <p>Exercícios auditivos que acessam o subconsciente para quebrar a associação neural entre estresse e cigarro.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-headphones-alt feature-icon"></i>
-                    <h3>Áudios SOS para Fissura</h3>
-                    <p>Técnicas de 3 minutos para utilizar em momentos de vontade aguda, bloqueando o impulso quase instantaneamente.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-bed feature-icon"></i>
-                    <h3>Hipnoterapia Noturna</h3>
-                    <p>Ondas Theta sincronizadas com scripts clínicos para você ouvir enquanto dorme, recondicionando a mente sem esforço.</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-shield-alt feature-icon"></i>
-                    <h3>Base Comprovada</h3>
-                    <p>Todo o conhecimento é estruturado de forma prática, focando em resultados efetivos na mudança de comportamento.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            // Container das opções
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'options-grid';
 
-    <!-- BIBLIOTECA DE CURSOS / ÁUDIOS -->
-    <section class="library-section" id="cursos">
-        <div class="container">
-            <div class="library-top">
-                <div>
-                    <h2>Biblioteca de Protocolos</h2>
-                    <p style="color: var(--text-light); margin-top: 10px; font-size: 1.1rem;">Programas desenvolvidos para quebrar o vício rapidamente.</p>
-                </div>
-                <div style="font-size: 1rem; font-weight: 700; cursor: pointer; color: var(--bg-dark); text-transform: uppercase; letter-spacing: 1px;">
-                    Ver todos <i class="fas fa-arrow-right" style="color: var(--accent-gold); margin-left: 5px;"></i>
-                </div>
-            </div>
-            
-            <div class="courses-scroll">
-                <!-- Card 1 -->
-                <div class="course-card">
-                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="course-body">
-                        <div class="course-rating"><i class="fas fa-star"></i> 4.9 <span style="margin-left:5px;">5.367 alunos</span></div>
-                        <h4 class="course-title">Desafio 7 Dias: Quebra de Gatilhos Subconscientes</h4>
-                        <div class="course-footer">
-                            <button class="btn-buy">INCLUÍDO</button>
-                            <a href="#" class="learn-more">Saiba mais</a>
-                        </div>
-                    </div>
-                </div>
+            // Cria botões
+            q.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = opt;
+                btn.onclick = () => nextQuestion();
+                optionsDiv.appendChild(btn);
+            });
 
-                <!-- Card 2 -->
-                <div class="course-card">
-                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="course-body">
-                        <div class="course-rating"><i class="fas fa-star"></i> 4.9 <span style="margin-left:5px;">4.599 alunos</span></div>
-                        <h4 class="course-title">Áudio SOS: Controle de Ansiedade e Fissura</h4>
-                        <div class="course-footer">
-                            <button class="btn-buy">INCLUÍDO</button>
-                            <a href="#" class="learn-more">Saiba mais</a>
-                        </div>
-                    </div>
-                </div>
+            qBox.appendChild(optionsDiv);
+            quizContent.appendChild(qBox);
+        }
 
-                <!-- Card 3 -->
-                <div class="course-card">
-                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1511295742362-92c96b12a3d9?auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="course-body">
-                        <div class="course-rating"><i class="fas fa-star"></i> 4.8 <span style="margin-left:5px;">3.523 alunos</span></div>
-                        <h4 class="course-title">Reprogramação Noturna: Ondas Theta para Fumantes</h4>
-                        <div class="course-footer">
-                            <button class="btn-buy">INCLUÍDO</button>
-                            <a href="#" class="learn-more">Saiba mais</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Card 4 -->
-                <div class="course-card">
-                    <div class="course-img" style="background-image: url('https://images.unsplash.com/photo-1554244933-d876deb6b2ff?auto=format&fit=crop&w=600&q=80');"></div>
-                    <div class="course-body">
-                        <div class="course-rating"><i class="fas fa-star"></i> 4.9 <span style="margin-left:5px;">2.112 alunos</span></div>
-                        <h4 class="course-title">Blindagem Mental: Prevenindo Recaídas e Estresse</h4>
-                        <div class="course-footer">
-                            <button class="btn-buy">INCLUÍDO</button>
-                            <a href="#" class="learn-more">Saiba mais</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center" style="margin-top: 60px;">
-                <!-- BOTÃO DE CHECKOUT AQUI -->
-                <a href="https://www.ggcheckout.com/checkout/v4/GimLqOi9HnEbfUSXcf2h" class="btn-cta">
-                    <span class="btn-main-text">DESBLOQUEAR TODOS OS ÁUDIOS</span>
-                    <span class="subtext">Acesso vitalício por R$ 16,90 (Pagamento Único)</span>
-                </a>
-            </div>
-        </div>
-    </section>
+        function nextQuestion() {
+            currentQuestionIndex++;
 
-    <!-- PERKS (HERE'S WHAT YOU GET) -->
-    <section class="perks-section">
-        <div class="container">
-            <h2 style="font-size: 2.5rem; max-width: 800px;">Isto não é apenas um curso. É o seu suporte diário para a liberdade.</h2>
-            
-            <div class="perks-list">
-                <div class="perk-item">
-                    <i class="fas fa-calendar-check"></i>
-                    <div class="perk-info">
-                        <h4>Protocolo de 7 Dias</h4>
-                        <p>Sessões guiadas sequenciais para reescrever o hábito subconsciente dia após dia.</p>
-                    </div>
-                </div>
-                <div class="perk-item">
-                    <i class="fas fa-infinity"></i>
-                    <div class="perk-info">
-                        <h4>Acesso Ilimitado</h4>
-                        <p>Explore a biblioteca no seu próprio ritmo, ouvindo quantas vezes precisar.</p>
-                    </div>
-                </div>
-                <div class="perk-item">
-                    <i class="fas fa-users"></i>
-                    <div class="perk-info">
-                        <h4>Comunidade Exclusiva</h4>
-                        <p>Conecte-se com pessoas que compartilham da mesma jornada no fórum da plataforma.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            if (currentQuestionIndex < questions.length) {
+                // Pequeno delay para efeito visual
+                setTimeout(() => {
+                    loadQuestion();
+                }, 200);
+            } else {
+                // Fim do quiz
+                progressBar.style.width = '100%';
+                setTimeout(() => {
+                    showResult();
+                }, 300);
+            }
+        }
 
-    <!-- DEPOIMENTOS / BEFORE & AFTER -->
-    <section class="ba-section" id="depoimentos">
-        <div class="container">
-            <div class="text-center">
-                <h2>Resultados Reais. Pessoas Reais.</h2>
-                <p style="margin-top: 15px; font-size: 1.1rem;">O que acontece após os 7 dias de reprogramação.</p>
-            </div>
-            
-            <div class="ba-grid">
-                <!-- Depoimento 1 -->
-                <div class="ba-card">
-                    <div class="ba-quote">"Eu não conseguia tomar um simples café sem acender um cigarro. O áudio cortou essa associação neural de forma inacreditável."</div>
-                    <div class="ba-results">
-                        <p>Após a Reprogramação:</p>
-                        <ul>
-                            <li><i class="fas fa-check"></i> Indiferença total ao cheiro de fumaça.</li>
-                            <li><i class="fas fa-check"></i> Olfato e paladar 100% recuperados.</li>
-                            <li><i class="fas fa-check"></i> Fim da tosse matinal.</li>
-                        </ul>
-                    </div>
-                    <div class="ba-meta">Carlos M. | Livre há: 8 meses</div>
-                </div>
-                
-                <!-- Depoimento 2 -->
-                <div class="ba-card">
-                    <div class="ba-quote">"Eu mudei completamente. Meu maior medo era engordar se parasse, mas o módulo de controle de ansiedade evitou a compulsão."</div>
-                    <div class="ba-results">
-                        <p>Após a Reprogramação:</p>
-                        <ul>
-                            <li><i class="fas fa-check"></i> Vontade automática desapareceu.</li>
-                            <li><i class="fas fa-check"></i> Sem ganho de peso (sem compulsão).</li>
-                            <li><i class="fas fa-check"></i> Fôlego restaurado e mais energia.</li>
-                        </ul>
-                    </div>
-                    <div class="ba-meta">Juliana S. | Livre há: 1 ano</div>
-                </div>
-            </div>
-        </div>
-    </section>
+        function showResult() {
+            quizHeader.style.display = 'none';
+            quizContent.style.display = 'none';
+            quizResult.style.display = 'block';
+        }
 
-    <!-- APP SECTION -->
-    <section class="app-section">
-        <div class="container app-grid">
-            <div class="app-text">
-                <h2 style="font-size: 3rem; margin-bottom: 25px;">Respira App — Sempre com Você</h2>
-                <p style="color: var(--text-light); margin-bottom: 35px; font-size: 1.15rem;">
-                    Todos os protocolos terapêuticos na palma da sua mão. Com o acesso mobile você garante a blindagem da sua mente em qualquer lugar.
-                </p>
-                
-                <ul style="list-style: none; margin-bottom: 50px;">
-                    <li style="margin-bottom: 18px; display: flex; gap: 15px; align-items: center; font-weight: 500;"><i class="fas fa-check-circle" style="color: var(--accent-gold); font-size: 1.2rem;"></i> Áudios SOS para momentos de estresse no trabalho.</li>
-                    <li style="margin-bottom: 18px; display: flex; gap: 15px; align-items: center; font-weight: 500;"><i class="fas fa-check-circle" style="color: var(--accent-gold); font-size: 1.2rem;"></i> Modo noturno com tela apagada.</li>
-                    <li style="margin-bottom: 18px; display: flex; gap: 15px; align-items: center; font-weight: 500;"><i class="fas fa-check-circle" style="color: var(--accent-gold); font-size: 1.2rem;"></i> Novas sessões guiadas adicionadas mensalmente.</li>
-                </ul>
-                
-                <!-- BOTÃO DE CHECKOUT AQUI -->
-                <a href="https://www.ggcheckout.com/checkout/v4/GimLqOi9HnEbfUSXcf2h" class="btn-cta">
-                    <span class="btn-main-text">COMEÇAR MINHA JORNADA</span>
-                    <span class="subtext">Por apenas R$ 16,90 (Pagamento Único)</span>
-                </a>
-            </div>
-            
-            <div>
-                <!-- CSS Phone Mockup -->
-                <div class="phone-mockup">
-                    <div class="phone-notch"></div>
-                    <div class="phone-screen">
-                        <div class="app-title">RESPIRA</div>
-                        
-                        <div class="app-track">
-                            <div class="app-track-icon"><i class="fas fa-play" style="font-size: 1rem;"></i></div>
-                            <div class="app-track-info">
-                                <div>Dia 1: Quebrando a Rotina</div>
-                                <div>18 min • Ondas Theta</div>
-                            </div>
-                        </div>
-                        
-                        <div class="app-track">
-                            <div class="app-track-icon"><i class="fas fa-play" style="font-size: 1rem;"></i></div>
-                            <div class="app-track-info">
-                                <div>Áudio SOS Ansiedade</div>
-                                <div>3 min • Foco Imediato</div>
-                            </div>
-                        </div>
-                        
-                        <div class="app-track" style="opacity: 0.5;">
-                            <div class="app-track-icon"><i class="fas fa-lock" style="font-size: 1rem;"></i></div>
-                            <div class="app-track-info">
-                                <div>Dia 2: Substituição Saudável</div>
-                                <div>22 min • Hipnoterapia</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        // Carrega primeira pergunta
+        loadQuestion();
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <div class="footer-logo">MÉTODO RESPIRA</div>
-                    <p class="footer-text">
-                        Acesso completo à saúde mental e liberdade do vício. Reprograme seus hábitos e viva com energia, saúde e propósito.
-                    </p>
-                </div>
-                <div class="footer-links">
-                    <h4>Plataforma</h4>
-                    <ul>
-                        <li><a href="#">Sobre Nós</a></li>
-                        <li><a href="#">Áudios e Cursos</a></li>
-                        <li><a href="#">Depoimentos</a></li>
-                        <li><a href="#">Fale Conosco</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#">Termos de Uso</a></li>
-                        <li><a href="#">Política de Privacidade</a></li>
-                        <li><a href="#">Aviso Médico</a></li>
-                        <li><a href="#">Política de Reembolso</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>Todos os serviços e informações neste site têm fins educacionais e não substituem aconselhamento médico. © 2026 Plataforma Respira. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
+    </script>
 
 </body>
 </html>
